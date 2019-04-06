@@ -1,5 +1,5 @@
 {
-  "main.js": "build/bundle.js",
+  "main.js": "bundle.js",
   "react.js": "build/1.bundle.js",
   "index.html": "index.html"
 }
