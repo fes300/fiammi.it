@@ -4,13 +4,14 @@ import Prelude
 
 import React.Basic (Component, JSX, createComponent, makeStateless)
 import React.Basic.DOM as R
-import Components.Navbar(navbar)
+
+type Navbar = Unit -> JSX
 
 component :: Component Unit
 component = createComponent "App"
 
-app :: JSX
-app = unit # makeStateless component \_ ->
+app :: Navbar -> JSX
+app navbar = unit # makeStateless component \_ ->
   R.div
     {
       children: [

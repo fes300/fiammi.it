@@ -1,7 +1,19 @@
-module Style.Navbar where
+module Style.MobileNavbar where
 
 import React.Basic.DOM as R
 import React.Basic.DOM.Internal (CSS)
+
+navbarStyle :: CSS
+navbarStyle = R.css {
+  position: "fixed",
+  backgroundColor: "#343944",
+  color: "white",
+  height: "56px",
+  width: "100%",
+  zIndex: 999,
+  display: "flex",
+  alignItems: "center"
+}
 
 burger :: CSS
 burger = R.css {
@@ -128,6 +140,12 @@ menuLinkStyle = R.css {
   "paddingLeft": "40px",
   "borderTop": "2px solid"
 }
+
+menuLinkActiveStyle :: CSS
+menuLinkActiveStyle = R.mergeStyles [
+  menuLinkStyle
+  , R.css { backgroundColor: "black" }
+]
 
 topBurger :: CSS
 topBurger = R.mergeStyles [allBurgers, burgersTopAndBottom, burgerTop]

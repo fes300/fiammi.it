@@ -1,15 +1,12 @@
-# react-basic-starter
+# Simple static website
 
-Fork or clone this repo to begin
+## install deps
+```
+$ yarn && bower install
+```
 
-## Install dependencies
+## build
+```
+$ yarn uglyBuild
+```
 
-`npm i && npx bower i`
-
-## Develop
-
-`npm start`
-
-## Build and deploy (gh-pages)
-
-`npm run deploy`
