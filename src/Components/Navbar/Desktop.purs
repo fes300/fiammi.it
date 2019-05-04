@@ -1,12 +1,12 @@
 module Components.Navbar.Desktop where
 
+import Components.Navbar.MenuItems (menuItems)
+import Constants (style)
+import Effect (Effect)
 import Prelude (Unit)
-
-import Style.DesktopNavbar (navbarStyle, navbarStyleActive, linkStyle, linkStyleActive)
 import React.Basic (Component, JSX, createComponent, make)
 import React.Basic.DOM as R
-import Components.Navbar.MenuItems (menuItems)
-import Effect (Effect)
+import Style.DesktopNavbar (navbarStyle, navbarStyleActive, linkStyle, linkStyleActive, menuStyle)
 
 desktopNavbarComponent :: Component Unit
 desktopNavbarComponent = createComponent "DesktopNavbar"
@@ -22,17 +22,28 @@ desktopNavbar = make desktopNavbarComponent { initialState, render }
         setActiveLink :: String -> Effect Unit
         setActiveLink al = self.setState (\s -> s { activeLink = al })
       in
-        R.div
-          { children: [
-              menuItems {
-                open: true
-                , activeLink: self.state.activeLink
-                , onClick: setActiveLink
-                , linkStyle: linkStyle
-                , linkStyleActive: linkStyleActive
-                , menuStyle: navbarStyle
-                , menuStyleActive: navbarStyleActive
-              }
-            ]
+        R.div { style: navbarStyle
+          , children: [
+            R.div {style: R.css { display: "flex", flexDirection: "column" }
+              , children: [ R.div
+                  {style: style.stylishText
+                    , children: [ R.text  "dott.ssa Fiammetta Facchinetti"]
+                  }
+                , R.div
+                  {style: style.stylishText
+                    , children: [ R.text  "Psicologa Psicoterapeuta"]
+                  }
+              ]
+            }
+            , menuItems {
+              open: true
+              , activeLink: self.state.activeLink
+              , onClick: setActiveLink
+              , linkStyle: linkStyle
+              , linkStyleActive: linkStyleActive
+              , menuStyle: menuStyle
+              , menuStyleActive: navbarStyleActive
+            }
+          ]
           }
 

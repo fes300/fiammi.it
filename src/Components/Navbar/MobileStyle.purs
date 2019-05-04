@@ -112,19 +112,6 @@ menuStyle = R.css {
   "transform": "translateX(-120%)"
 }
 
-fiammi :: CSS
-fiammi = R.css {
-  "cursor": "pointer",
-  "display": "inline",
-  "fontFamily": "PT Serif, Georgia, Times New Roman, Times, serif",
-  "fontSize": "20px",
-  "fontStyle": "italic",
-  "fontWeight": "400",
-  "letterSpacing": "-0.45px",
-  "lineHeight": "24px",
-  "whiteSpace": "nowrap"
-}
-
 menuStyleActive :: CSS
 menuStyleActive = R.css {
   "WebkitTransform": "translateX(0)",
@@ -133,8 +120,7 @@ menuStyleActive = R.css {
 
 menuLinkStyle :: CSS
 menuLinkStyle = R.css {
-  "fontSize": "20px",
-  "fontStyle": "italic",
+  "fontSize": "16px",
   "height": "50px",
   "display": "flex",
   "alignItems": "center",

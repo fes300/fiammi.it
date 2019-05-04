@@ -1,28 +1,25 @@
 module Components.Navbar.Mobile where
 
+import Components.Navbar.MenuItems (menuItems)
+import Constants (style)
+import Effect (Effect)
 import Prelude (Unit, not, ($), append)
-
-import Style.MobileNavbar (
-  bottomBurger,
-  bottomBurgerActive,
-  burger,
-  centralBurger,
-  centralBurgerActive,
-  fiammi,
-  menuStyle,
-  menuStyleActive,
-  topBurger,
-  topBurgerActive,
-  menuLinkStyle,
-  menuLinkActiveStyle,
-  navbarStyle
-)
 import React.Basic (Component, JSX, createComponent, make)
 import React.Basic.DOM as R
 import React.Basic.DOM.Events (capture_)
-import Components.Navbar.MenuItems (menuItems)
-import Effect (Effect)
-
+import Style.MobileNavbar (bottomBurger
+  , bottomBurgerActive
+  , burger
+  , centralBurger
+  , centralBurgerActive
+  , menuStyle
+  , menuStyleActive
+  , topBurger
+  , topBurgerActive
+  , menuLinkStyle
+  , menuLinkActiveStyle
+  , navbarStyle
+)
 mobileNavbarComponent :: Component Unit
 mobileNavbarComponent = createComponent "MobileNavbar"
 
@@ -50,7 +47,7 @@ mobileNavbar = make mobileNavbarComponent { initialState, render }
                 , R.span {style: if self.state.open then bottomBurgerActive else bottomBurger}]
                 }
                 , R.div
-                  {style: fiammi
+                  {style: style.stylishText
                   , children: [ R.text  "Fiammetta Facchinetti"]
                   }
               ]
