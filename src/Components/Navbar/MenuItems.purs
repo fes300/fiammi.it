@@ -1,12 +1,10 @@
 module Components.Navbar.MenuItems where
 
-import Prelude((==))
-
 import Components.Link (link)
-import Components.Navbar.Constants (sections)
+import Constants (sections)
 import Data.Array (fromFoldable)
 import Effect (Effect)
-import Prelude (Unit, map, ($))
+import Prelude (Unit, map, (==))
 import React.Basic (Component, JSX, createComponent, makeStateless)
 import React.Basic.DOM as R
 import React.Basic.DOM.Internal (CSS)

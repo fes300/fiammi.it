@@ -1,5 +1,6 @@
 module Style.MobileNavbar where
 
+import Constants (style)
 import React.Basic.DOM as R
 import React.Basic.DOM.Internal (CSS)
 
@@ -105,7 +106,7 @@ menuStyle = R.css {
   "transition": "0.3s all cubic-bezier(0.785, 0.135, 0.15, 0.86)",
   "padding": "112px 0 56px",
   "color": "#fff",
-  "backgroundColor": "#343944",
+  "backgroundColor": style.bluePalette,
   "zIndex": 15,
   "WebkitTransform": "translateX(-120%)",
   "transform": "translateX(-120%)"
@@ -144,7 +145,7 @@ menuLinkStyle = R.css {
 menuLinkActiveStyle :: CSS
 menuLinkActiveStyle = R.mergeStyles [
   menuLinkStyle
-  , R.css { backgroundColor: "black" }
+  , R.css { backgroundColor: style.bluePaletteLight }
 ]
 
 topBurger :: CSS
