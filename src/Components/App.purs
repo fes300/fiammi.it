@@ -2,6 +2,10 @@ module Components.App where
 
 import Prelude
 
+import Components.Sections (sectionsJsx)
+import Data.Array (fromFoldable)
+import Data.List ((:))
+import Data.Map (values)
 import React.Basic (Component, JSX, createComponent, makeStateless)
 import React.Basic.DOM as R
 
@@ -14,9 +18,5 @@ app :: Navbar -> JSX
 app navbar = unit # makeStateless component \_ ->
   R.div
     { style: R.css { fontFamily: "\"Open Sans\", Helvetica, Arial, sans-serif", display: "flex", flexDirection: "column" }
-      , children: [
-        navbar unit
-        , R.div { style: R.css { height: "2000px" } }
-        , R.div { style: R.css { height: "2000px" }, id: "Chi sono", children: [ R.text "chi" ] }
-      ]
+      , children: fromFoldable (navbar unit : (values sectionsJsx))
     }
