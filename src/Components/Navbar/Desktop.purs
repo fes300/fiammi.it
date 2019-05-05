@@ -1,12 +1,12 @@
 module Components.Navbar.Desktop where
 
 import Components.Navbar.MenuItems (menuItems)
-import Constants (style)
+import Constants (Section(..), style)
 import Effect (Effect)
 import Prelude (Unit)
 import React.Basic (Component, JSX, createComponent, make)
 import React.Basic.DOM as R
-import Style.DesktopNavbar (navbarStyle, navbarStyleActive, linkStyle, linkStyleActive, menuStyle)
+import Style.DesktopNavbar (navbarStyle, navbarStyleActive, linkStyle, linkStyleActive, menuStyle, fiammiStyle)
 
 desktopNavbarComponent :: Component Unit
 desktopNavbarComponent = createComponent "DesktopNavbar"
@@ -14,17 +14,17 @@ desktopNavbarComponent = createComponent "DesktopNavbar"
 desktopNavbar :: Unit -> JSX
 desktopNavbar = make desktopNavbarComponent { initialState, render }
   where
-    initialState :: { activeLink :: String }
-    initialState = { activeLink: "Home" }
+    initialState :: { activeLink :: Section }
+    initialState = { activeLink: Home }
 
     render self =
       let
-        setActiveLink :: String -> Effect Unit
+        setActiveLink :: Section -> Effect Unit
         setActiveLink al = self.setState (\s -> s { activeLink = al })
       in
         R.div { style: navbarStyle
           , children: [
-            R.div {style: R.css { display: "flex", flexDirection: "column" }
+            R.div {style: fiammiStyle
               , children: [ R.div
                   {style: style.stylishText
                     , children: [ R.text  "dott.ssa Fiammetta Facchinetti"]
@@ -45,5 +45,5 @@ desktopNavbar = make desktopNavbarComponent { initialState, render }
               , menuStyleActive: navbarStyleActive
             }
           ]
-          }
+        }
 

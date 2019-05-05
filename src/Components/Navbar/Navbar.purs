@@ -3,16 +3,16 @@ module Components.Navbar where
 import Components.Navbar.Desktop (desktopNavbar)
 import Components.Navbar.Mobile (mobileNavbar)
 import Effect (Effect)
-import Prelude (Unit, bind, (<), pure)
+import Prelude (Unit, bind, pure)
 import React.Basic (JSX)
+import Utils (isMobile)
 import Web.HTML (window)
-import Web.HTML.Window (innerWidth)
 
 navbar :: Effect (Unit -> JSX)
 navbar = do
   unwrappedWindow <- window
-  width <- innerWidth unwrappedWindow
-  if width < 425
+  mobile <- isMobile unwrappedWindow
+  if mobile
     then pure mobileNavbar
     else pure desktopNavbar
 

@@ -1,37 +1,25 @@
 module Components.Navbar.Mobile where
 
 import Components.Navbar.MenuItems (menuItems)
-import Constants (style)
+import Constants (Section(..), style)
 import Effect (Effect)
 import Prelude (Unit, not, ($), append)
 import React.Basic (Component, JSX, createComponent, make)
 import React.Basic.DOM as R
 import React.Basic.DOM.Events (capture_)
-import Style.MobileNavbar (bottomBurger
-  , bottomBurgerActive
-  , burger
-  , centralBurger
-  , centralBurgerActive
-  , menuStyle
-  , menuStyleActive
-  , topBurger
-  , topBurgerActive
-  , menuLinkStyle
-  , menuLinkActiveStyle
-  , navbarStyle
-)
+import Style.MobileNavbar (bottomBurger, bottomBurgerActive, burger, centralBurger, centralBurgerActive, menuStyle, menuStyleActive, topBurger, topBurgerActive, menuLinkStyle, menuLinkActiveStyle, navbarStyle)
 mobileNavbarComponent :: Component Unit
 mobileNavbarComponent = createComponent "MobileNavbar"
 
 mobileNavbar :: Unit -> JSX
 mobileNavbar = make mobileNavbarComponent { initialState, render }
   where
-    initialState :: { open :: Boolean, activeLink :: String }
-    initialState = { open: false, activeLink: "Home" }
+    initialState :: { open :: Boolean, activeLink :: Section }
+    initialState = { open: false, activeLink: Home }
 
     render self =
       let
-        setActiveLink :: String -> Effect Unit
+        setActiveLink :: Section -> Effect Unit
         setActiveLink al = self.setState (\s -> s { open = not s.open, activeLink = al })
         toggleState = self.setState (\s -> s { open = not s.open })
       in

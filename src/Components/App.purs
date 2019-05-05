@@ -2,7 +2,6 @@ module Components.App where
 
 import Prelude
 
-import CSS (fontFamily)
 import React.Basic (Component, JSX, createComponent, makeStateless)
 import React.Basic.DOM as R
 
@@ -14,7 +13,7 @@ component = createComponent "App"
 app :: Navbar -> JSX
 app navbar = unit # makeStateless component \_ ->
   R.div
-    { style: R.css { fontFamily: "\"Open Sans\", Helvetica, Arial, sans-serif" }
+    { style: R.css { fontFamily: "\"Open Sans\", Helvetica, Arial, sans-serif", display: "flex", flexDirection: "column" }
       , children: [
         navbar unit
         , R.div { style: R.css { height: "2000px" } }

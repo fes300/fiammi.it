@@ -6,20 +6,32 @@ import React.Basic.DOM as R
 import React.Basic.DOM.Internal (CSS)
 
 navbarStyle :: CSS
-navbarStyle = R.css {position: "fixed"
+navbarStyle = R.css {
+  position: "fixed"
+  , top: 0
+  , left: 0
+  , right: 0
   , display: "flex"
   , backgroundColor: style.white
   , height: "56px"
-  , width: "100%"
   , zIndex: 999
+  , padding: "25px"
+  , borderBottom: "solid 1px " <> style.borderColor
 }
 
 menuStyle :: CSS
-menuStyle = R.css {display: "flex"
+menuStyle = R.css {
+  display: "flex"
   , alignItems: "center"
   , justifyContent: "space-around"
-  , borderBottom: "solid 1px " <> style.borderColor
-  , width: "100%"
+  , flexGrow: 1
+}
+
+fiammiStyle :: CSS
+fiammiStyle = R.css {
+  display: "flex"
+  , flexDirection: "column"
+  , marginRight: "80px"
 }
 
 navbarStyleActive :: CSS

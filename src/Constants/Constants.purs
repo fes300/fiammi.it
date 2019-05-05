@@ -1,11 +1,26 @@
 module Constants where
 
+import Prelude
+
+import Data.Generic.Rep (class Generic)
+import Data.Generic.Rep.Eq (genericEq)
+import Data.Generic.Rep.Ord (genericCompare)
 import Data.List (List(..), (:))
 import React.Basic.DOM as R
 import React.Basic.DOM.Internal (CSS)
 
-sections :: List String
-sections = ("Home" : "Chi sono" : "Come lavoro" : "Dove ricevo" : "FAQ" : "Contatti" : "Disturbi trattati" : Nil)
+data Section = Home | ChiSono | ComeLavoro | DoveRicevo | FAQ | Contatti | DisturbiTrattati
+
+derive instance genericSection :: Generic Section _
+
+instance sectionEq :: Eq Section where
+  eq = genericEq
+
+instance sectionCompare :: Ord Section where
+  compare = genericCompare
+
+sections :: List Section
+sections = (Home : ChiSono : ComeLavoro : DoveRicevo : FAQ : Contatti : DisturbiTrattati : Nil)
 
 style :: {bluePalette :: String
   , bluePaletteLight :: String
