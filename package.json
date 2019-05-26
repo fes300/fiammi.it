@@ -4,7 +4,7 @@
   "description": "An example react-basic project",
   "repository": "lumihq/react-basic-starter",
   "scripts": {
-    "start": "webpack-dev-server -wd --port 3000",
+    "start": "webpack-dev-server --disableHostCheck=true -wd --port 3000",
     "start-public": "webpack-dev-server -wd --port 3000 --host 0.0.0.0",
     "build": "webpack -p",
     "predeploy": "npm run build",
