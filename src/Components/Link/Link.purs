@@ -11,17 +11,16 @@ import React.Basic.Events (handler_)
 import Style.Link (linkStyle)
 import Utils (scrollTo, sectionToString)
 
-type Props a = {
-  value :: a
+type LinkProps a = {value :: a
   , text :: String
   , onClick :: a -> Effect Unit
   , style :: CSS
 }
 
-linkComponent :: Component (Props Section)
+linkComponent :: Component (LinkProps Section)
 linkComponent = createComponent "Link"
 
-link :: Props Section -> JSX
+link :: LinkProps Section -> JSX
 link = makeStateless linkComponent \props ->
   R.div
     {

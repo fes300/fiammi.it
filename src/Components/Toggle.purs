@@ -11,9 +11,6 @@ type Props =
   { initialValue :: Boolean
   }
 
-data Action
-  = Toggle
-
 component :: Component Props
 component = createComponent "App"
 

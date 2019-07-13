@@ -29,14 +29,9 @@ scrollTo el =
       case domElement of
         Nothing -> log $ el <> " not found"
         Just domEl  -> do
-          elScroll <- getInt (getBoundingClientRect domEl)
+          elScroll <- getBoundingClientRect domEl
           mobile <- isMobile unwrappedWindow
-          scroll currentScroll (currentScroll + elScroll - (getTopMargin mobile)) unwrappedWindow
-
-getInt :: Effect Number -> Effect Int
-getInt effN = do
-  n <- effN
-  pure $ floor n
+          scroll currentScroll (currentScroll + floor elScroll - getTopMargin mobile) unwrappedWindow
 
 sectionToString :: Section -> String
 sectionToString = case _ of
