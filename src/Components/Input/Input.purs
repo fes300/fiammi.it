@@ -9,11 +9,12 @@ import React.Basic.DOM as R
 import React.Basic.DOM.Events (preventDefault, targetValue)
 import React.Basic.Events (handler)
 
--- missing "placeholder" and "required" props
-
 data Input = NumberInput (Maybe Int) | StringInput (Maybe String) | BooleanInput (Maybe Boolean)
 
-type InputProps = { value :: Input, onChange :: Input -> Effect Unit }
+type InputProps = { value :: Input
+  , onChange :: Input -> Effect Unit
+  , placeholder :: String
+  , required :: Boolean }
 
 inputComponent :: Component InputProps
 inputComponent = createComponent "Input"
@@ -29,9 +30,9 @@ input = makeStateless inputComponent \props ->
 
   in
     case props.value of
-      NumberInput Nothing -> R.input { type: "number", value: "", onChange: specializedHandler }
-      NumberInput (Just n) -> R.input { type: "number", value: show n, onChange: specializedHandler }
-      StringInput Nothing -> R.input { type: "text", value: "", onChange: specializedHandler }
-      StringInput (Just s) -> R.input { type: "text", value: s, onChange: specializedHandler }
-      BooleanInput Nothing -> R.input { type: "checkbox", checked: false, onChange: specializedHandler }
-      BooleanInput (Just b) -> R.input { type: "checkbox", checked: b, onChange: specializedHandler }
+      NumberInput Nothing -> R.input { type: "number", value: "", onChange: specializedHandler, placeholder: props.placeholder }
+      NumberInput (Just n) -> R.input { type: "number", value: show n, onChange: specializedHandler, placeholder: props.placeholder }
+      StringInput Nothing -> R.input { type: "text", value: "", onChange: specializedHandler, placeholder: props.placeholder }
+      StringInput (Just s) -> R.input { type: "text", value: s, onChange: specializedHandler, placeholder: props.placeholder }
+      BooleanInput Nothing -> R.input { type: "checkbox", checked: false, onChange: specializedHandler, placeholder: props.placeholder }
+      BooleanInput (Just b) -> R.input { type: "checkbox", checked: b, onChange: specializedHandler, placeholder: props.placeholder }
