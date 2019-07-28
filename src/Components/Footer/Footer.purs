@@ -2,9 +2,11 @@ module Components.Footer where
 
 import Prelude
 
-import Components.Input (Input(..), input)
+import Components.Button (button)
+import Components.Input (input)
 import Components.Textarea (textarea)
-import Data.Maybe (Maybe(..))
+import Data.Maybe (Maybe(..), isJust)
+import Data.String.NonEmpty (NonEmptyString)
 import Effect (Effect)
 import React.Basic (Component, JSX, createComponent, make)
 import React.Basic.DOM as R
@@ -15,17 +17,19 @@ footerComponent = createComponent "Footer"
 footer :: Unit -> JSX
 footer = make footerComponent { initialState, render }
   where
-    initialState :: { name :: Input, email :: Input, message :: Maybe String }
-    initialState = { name: StringInput Nothing, email: StringInput Nothing, message: Nothing }
+    initialState :: { name :: Maybe NonEmptyString, email :: Maybe NonEmptyString, message :: Maybe NonEmptyString }
+    initialState = { name: Nothing, email: Nothing, message: Nothing }
 
     render self =
       let
-        onChangeName :: Input -> Effect Unit
+        onChangeName :: Maybe NonEmptyString -> Effect Unit
         onChangeName n = self.setState (\s -> s { name = n })
-        onChangeEmail :: Input -> Effect Unit
+        onChangeEmail :: Maybe NonEmptyString -> Effect Unit
         onChangeEmail n = self.setState (\s -> s { email = n })
-        onChangeMessage :: Maybe String -> Effect Unit
+        onChangeMessage :: Maybe NonEmptyString -> Effect Unit
         onChangeMessage n = self.setState (\s -> s { message = n })
+        sendForm :: Unit -> Effect Unit
+        sendForm n = self.setState (\s -> initialState)
       in
         R.div { children: [
           input { value: self.state.name
@@ -40,4 +44,8 @@ footer = make footerComponent { initialState, render }
             , onChange: onChangeMessage
             , placeholder: "messaggio"
             , required: true }
+          , button { label: "send mail"
+            , disabled: not $ isJust self.state.name && isJust self.state.email && isJust self.state.message
+            , onClick: sendForm
+          }
         ]}
