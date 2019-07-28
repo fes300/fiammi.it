@@ -3,6 +3,7 @@ module Components.Footer where
 import Prelude
 
 import Components.Input (Input(..), input)
+import Components.Textarea (textarea)
 import Data.Maybe (Maybe(..))
 import Effect (Effect)
 import React.Basic (Component, JSX, createComponent, make)
@@ -14,8 +15,8 @@ footerComponent = createComponent "Footer"
 footer :: Unit -> JSX
 footer = make footerComponent { initialState, render }
   where
-    initialState :: { name :: Input, email :: Input, message :: Input }
-    initialState = { name: StringInput Nothing, email: StringInput Nothing, message: StringInput Nothing }
+    initialState :: { name :: Input, email :: Input, message :: Maybe String }
+    initialState = { name: StringInput Nothing, email: StringInput Nothing, message: Nothing }
 
     render self =
       let
@@ -23,7 +24,7 @@ footer = make footerComponent { initialState, render }
         onChangeName n = self.setState (\s -> s { name = n })
         onChangeEmail :: Input -> Effect Unit
         onChangeEmail n = self.setState (\s -> s { email = n })
-        onChangeMessage :: Input -> Effect Unit
+        onChangeMessage :: Maybe String -> Effect Unit
         onChangeMessage n = self.setState (\s -> s { message = n })
       in
         R.div { children: [
@@ -35,7 +36,7 @@ footer = make footerComponent { initialState, render }
             , onChange: onChangeEmail
             , placeholder: "la tua email"
             , required: true }
-          , input { value: self.state.message
+          , textarea { value: self.state.message
             , onChange: onChangeMessage
             , placeholder: "messaggio"
             , required: true }
