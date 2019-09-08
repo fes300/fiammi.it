@@ -8,6 +8,7 @@ import Data.Array (concat, fromFoldable)
 import Data.Map (values)
 import React.Basic (Component, JSX, createComponent, makeStateless)
 import React.Basic.DOM as R
+import Style.App (appStyle, sectionContainerStyle)
 
 type Navbar = Unit -> JSX
 
@@ -17,6 +18,8 @@ component = createComponent "App"
 app :: Navbar -> JSX
 app navbar = unit # makeStateless component \_ ->
   R.div
-    { style: R.css { fontFamily: "\"Open Sans\", Helvetica, Arial, sans-serif", display: "flex", flexDirection: "column" }
-      , children: concat [[navbar unit], fromFoldable (values sectionsJsx), [footer unit]]
+    { style: appStyle
+      , children: concat [[navbar unit]
+        , [R.div { style: sectionContainerStyle, children: fromFoldable (values sectionsJsx) }]
+        , [footer unit]]
     }

@@ -2,6 +2,7 @@ module Components.Sections where
 
 import Prelude
 
+import Components.Home (home)
 import Constants (Section(..), sections)
 import Data.Map (Map, fromFoldable)
 import Data.Tuple (Tuple(..))
@@ -14,7 +15,7 @@ sectionsJsx = fromFoldable $ map sectionToTuple sections
   where
     sectionToTuple :: Section -> Tuple Section JSX
     sectionToTuple = case _ of
-      Home -> Tuple Home (R.div { style: R.css { height: "800px" }, id: (sectionToString Home), children: [ R.text "Home" ] })
+      Home -> Tuple Home (R.div { style: R.css { height: "800px" }, id: (sectionToString Home), children: [ home unit ] })
       ChiSono -> Tuple ChiSono (R.div { style: R.css { height: "800px" }, id: (sectionToString ChiSono), children: [ R.text "ChiSono" ] })
       ComeLavoro -> Tuple ComeLavoro (R.div { style: R.css { height: "800px" }, id: (sectionToString ComeLavoro), children: [ R.text "ComeLavoro" ] })
       DoveRicevo -> Tuple DoveRicevo (R.div { style: R.css { height: "800px" }, id: (sectionToString DoveRicevo), children: [ R.text "DoveRicevo" ] })
