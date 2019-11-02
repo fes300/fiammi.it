@@ -23,6 +23,7 @@ sectionToTitle :: Section -> String
 sectionToTitle = case _ of
   Home -> "Home"
   ChiSono ->  "Chi sono"
+  DiCosaMiOccupo ->  "Di cosa mi occupo"
   ComeLavoro -> "Come lavoro"
   DoveRicevo -> "Dove ricevo"
   FAQ -> "FAQ"

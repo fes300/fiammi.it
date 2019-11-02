@@ -9,7 +9,7 @@ import Data.List (List(..), (:))
 import React.Basic.DOM as R
 import React.Basic.DOM.Internal (CSS)
 
-data Section = Home | ChiSono | ComeLavoro | DoveRicevo | FAQ | Contatti | DisturbiTrattati
+data Section = Home | ChiSono | DiCosaMiOccupo | ComeLavoro | DoveRicevo | FAQ | Contatti | DisturbiTrattati
 
 derive instance genericSection :: Generic Section _
 
@@ -20,7 +20,7 @@ instance sectionCompare :: Ord Section where
   compare = genericCompare
 
 sections :: List Section
-sections = (Home : ChiSono : ComeLavoro : DoveRicevo : FAQ : Contatti : DisturbiTrattati : Nil)
+sections = (Home : ChiSono : DiCosaMiOccupo : ComeLavoro : DoveRicevo : FAQ : Contatti : DisturbiTrattati : Nil)
 
 style :: {bluePalette :: String
   , bluePaletteLight :: String
@@ -31,6 +31,8 @@ style :: {bluePalette :: String
   , borderColor :: String
   , stylishText :: CSS
   , title :: CSS
+  , highlight :: CSS
+  , subtitle :: CSS
 }
 
 style = {"bluePalette": "#343944"
@@ -49,10 +51,15 @@ style = {"bluePalette": "#343944"
       , "letterSpacing": "-0.45px"
       , "lineHeight": "24px"
       , "whiteSpace": "nowrap"}
-  , "title": R.css { color: "rgb(67, 67, 69)"
+  , "title": R.css { "color": "rgb(67, 67, 69)"
     , "fontSize": "36px"
     , "fontFamily": "'PT Serif', Georgia, 'Times New Roman'"
     , "fontWeight": "700"
     , "letterSpacing": "-.03em"
     , "lineHeight": "1.2"
-    , "textAlign": "center" }}
+    , "textAlign": "center" }
+  , "subtitle": R.css { "fontWeight": "700"
+    , "color": "rgb(67, 67, 69)"
+    , "fontSize": "20px" }
+  , "highlight": R.css { "color": "rgb(155, 155, 155)"
+    , "fontWeight": "700"} }

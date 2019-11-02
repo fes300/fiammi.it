@@ -37,6 +37,7 @@ sectionToString :: Section -> String
 sectionToString = case _ of
   Home -> "Home"
   ChiSono -> "ChiSono"
+  DiCosaMiOccupo -> "DiCosaMiOccupo"
   ComeLavoro -> "ComeLavoro"
   DoveRicevo -> "DoveRicevo"
   FAQ -> "FAQ"

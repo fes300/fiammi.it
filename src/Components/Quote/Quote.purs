@@ -1,11 +1,9 @@
 module Components.Quote where
 
-import React.Basic.DOM.SVG
-
 import React.Basic (Component, JSX, createComponent, makeStateless)
 import React.Basic.DOM as R
 import React.Basic.DOM.SVG (path)
-import Style.Quote (quoteStyle, authorStyle)
+import Style.Quote (iconStyle, quoteStyle, authorStyle)
 
 type QuoteProps = { quote :: String, author :: String }
 
@@ -14,7 +12,8 @@ quoteComponent = createComponent "Quote"
 
 quote :: QuoteProps -> JSX
 quote = makeStateless quoteComponent \props ->
-  R.div { children: [R.svg { fill: "#cbcbcb"
+  R.div { children: [R.svg { style: iconStyle
+      , fill: "#cbcbcb"
       , width: "35"
       , height: "32"
       , viewBox: "0 0 35 32"
