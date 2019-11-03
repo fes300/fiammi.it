@@ -14,6 +14,26 @@ ansiaImage = R.css { display: "flex"
   , backgroundSize: "cover"
   , margin: "30px 0" }
 
+depressioneImage :: CSS
+depressioneImage = R.css { display: "flex"
+  , flexDirection: ""
+  , justifyContent: "center"
+  , height: "200px"
+  , backgroundImage: "url(../../src/assets/images/depressione.jpeg)"
+  , backgroundPosition: "center"
+  , backgroundSize: "cover"
+  , margin: "30px 0" }
+
+altriDisturbiImage :: CSS
+altriDisturbiImage = R.css { display: "flex"
+  , flexDirection: ""
+  , justifyContent: "center"
+  , height: "200px"
+  , backgroundImage: "url(../../src/assets/images/depressione.jpeg)"
+  , backgroundPosition: "center"
+  , backgroundSize: "cover"
+  , margin: "30px 0" }
+
 subsection :: CSS
 subsection = R.mergeStyles [ style.subtitle
   , R.css { margin: "20px 0" } ]

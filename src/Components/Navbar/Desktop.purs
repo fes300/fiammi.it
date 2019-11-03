@@ -1,6 +1,8 @@
 module Components.Navbar.Desktop where
 
 import Components.Navbar.MenuItems (menuItems)
+import Components.NavigationLink (Path(..))
+import Components.NavigationWrapper (navigationWrapper)
 import Constants (Section(..), style)
 import Effect (Effect)
 import Prelude (Unit)
@@ -8,10 +10,10 @@ import React.Basic (Component, JSX, createComponent, make)
 import React.Basic.DOM as R
 import Style.DesktopNavbar (navbarStyle, navbarStyleActive, linkStyle, linkStyleActive, menuStyle, fiammiStyle)
 
-desktopNavbarComponent :: Component Unit
+desktopNavbarComponent :: Component { home :: Boolean }
 desktopNavbarComponent = createComponent "DesktopNavbar"
 
-desktopNavbar :: Unit -> JSX
+desktopNavbar :: { home :: Boolean } -> JSX
 desktopNavbar = make desktopNavbarComponent { initialState, render }
   where
     initialState :: { activeLink :: Section }
@@ -35,15 +37,17 @@ desktopNavbar = make desktopNavbarComponent { initialState, render }
                   }
               ]
             }
-            , menuItems {
-              open: true
-              , activeLink: self.state.activeLink
-              , onClick: setActiveLink
-              , linkStyle: linkStyle
-              , linkStyleActive: linkStyleActive
-              , menuStyle: menuStyle
-              , menuStyleActive: navbarStyleActive
-            }
+            , case self.props.home of
+              false -> navigationWrapper { children: [R.text "home"]
+                , style: R.css {}
+                , path: HomePath }
+              true -> menuItems { open: true
+                , activeLink: self.state.activeLink
+                , onClick: setActiveLink
+                , linkStyle: linkStyle
+                , linkStyleActive: linkStyleActive
+                , menuStyle: menuStyle
+                , menuStyleActive: navbarStyleActive }
           ]
         }
 

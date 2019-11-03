@@ -16,6 +16,11 @@ navbarStyle = R.css {
   alignItems: "center"
 }
 
+backButton :: CSS
+backButton = R.css {
+  marginRight: "10px"
+  , display: "flex" }
+
 burger :: CSS
 burger = R.css {
   "display": "inline-block",

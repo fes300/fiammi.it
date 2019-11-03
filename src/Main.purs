@@ -19,4 +19,4 @@ main = do
   unwrappedNavbar <- navbar
   case root of
     Nothing -> throw "Root element not found."
-    Just r  -> render (app unwrappedNavbar) r
+    Just r  -> render (app { navbar: unwrappedNavbar }) r
