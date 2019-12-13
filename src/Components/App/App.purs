@@ -1,8 +1,5 @@
 module Components.App where
 
-import Prelude
-
-import Components.Footer (footer)
 import Components.Navbar (Navbar)
 import Navigation (navigation)
 import React.Basic (Component, JSX, createComponent, makeStateless)
@@ -16,6 +13,5 @@ app :: { navbar :: Navbar } -> JSX
 app = makeStateless component \{ navbar } ->
   R.div
     { style: appStyle
-      , children: [ navigation { navbar }
-        , footer unit ]
+      , children: [ navigation { navbar } ]
     }

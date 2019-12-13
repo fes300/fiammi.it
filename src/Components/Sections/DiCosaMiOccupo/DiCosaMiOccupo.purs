@@ -2,12 +2,15 @@ module Components.DiCosaMiOccupo where
 
 import Prelude
 
+import Components.AngleRight (angleRight)
 import Components.Divider (divider)
+import Components.Link (link, LinkProps(Link))
 import Components.NavigationLink (Path(..), navigationLink)
-import Constants (style)
+import Constants (style, Section(Contatti))
 import React.Basic (Component, JSX, createComponent, makeStateless)
 import React.Basic.DOM as R
-import Style.DiCosaMiOccupo (altriDisturbiImage, ansiaImage, depressioneImage, subsection)
+import Style.DiCosaMiOccupo (altriDisturbiImage, ansiaImage, cosaPossoFare, cosaPossoFareTitle, depressioneImage, minidivider, subsection)
+import Style.NavigationLink (navigationLinkStyle)
 
 diCosaMiOccupoComponent :: Component Unit
 diCosaMiOccupoComponent = createComponent "diCosaMiOccupo"
@@ -55,5 +58,18 @@ diCosaMiOccupo = makeStateless diCosaMiOccupoComponent \props ->
         \come ansia e depressione - che provocano un intenso malessere nella vita di tutti i giorni. Spesso \
         \si rivolgono a me persone che stanno vivendo una forte conflittualità familiare o coniugale e non sanno \
         \come uscirne, altri non riescono a superare un evento stressante o hanno problemi sul lavoro che rovinano la loro vita privata." ] }
-      , navigationLink { text: "Continua", path: AltriPath } ]
+      , navigationLink { text: "Continua", path: AltriPath }
+      , R.div { style: cosaPossoFare
+        , children: [ R.div { children: [R.text "Cosa posso fare per te"]
+            , style: cosaPossoFareTitle}
+          , R.div { style: minidivider }
+          , R.text "Lavoreremo insieme per aiutarti a stare meglio."
+          , R.div {style: R.css { display: "flex"
+              , marginTop: "20px"
+              , alignItems: "center"
+              , justifyContent: "center"}
+            , children: [ link $ Link { text: "Chiedi un consulto"
+                , value: Contatti
+                , style: R.mergeStyles [navigationLinkStyle, R.css { marginRight: "10px" }] }
+              , angleRight { height: "12", width: "12", color: style.safeGreen } ]} ]}]
   }

@@ -11,9 +11,12 @@ import React.Basic.Events (handler_)
 import Style.Link (linkStyle)
 import Utils (scrollTo, sectionToString)
 
-type LinkProps a = {value :: a
+data LinkProps a = EffectfulLink {value :: a
   , text :: String
   , onClick :: a -> Effect Unit
+  , style :: CSS
+} | Link {value :: a
+  , text :: String
   , style :: CSS
 }
 
@@ -22,12 +25,15 @@ linkComponent = createComponent "Link"
 
 link :: LinkProps Section -> JSX
 link = makeStateless linkComponent \props ->
-  R.div
-    {
-      style: R.mergeStyles [linkStyle, props.style]
+  case props of
+    EffectfulLink propsE -> R.div {style: R.mergeStyles [linkStyle, propsE.style]
       , onClick: handler_ do
-          r1 <- props.onClick props.value
-          r2 <- scrollTo $ sectionToString props.value
+          r1 <- propsE.onClick propsE.value
+          r2 <- scrollTo $ sectionToString propsE.value
           pure r2
-      , children: [ R.text props.text]
-    }
+      , children: [ R.text propsE.text]}
+    Link propsF -> R.div {style: R.mergeStyles [linkStyle, propsF.style]
+      , onClick: handler_ do
+          r2 <- scrollTo $ sectionToString propsF.value
+          pure r2
+      , children: [ R.text propsF.text]}

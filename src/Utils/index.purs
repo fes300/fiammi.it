@@ -42,4 +42,3 @@ sectionToString = case _ of
   DoveRicevo -> "DoveRicevo"
   FAQ -> "FAQ"
   Contatti -> "Contatti"
-  DisturbiTrattati -> "DisturbiTrattati"

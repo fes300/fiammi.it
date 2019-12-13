@@ -1,10 +1,10 @@
 module Components.Navbar.MenuItems where
 
-import Components.Link (link)
+import Components.Link (link, LinkProps(EffectfulLink))
 import Constants (Section(..), sections)
 import Data.Array (fromFoldable)
 import Effect (Effect)
-import Prelude (Unit, map, (==))
+import Prelude (Unit, map, (==), ($))
 import React.Basic (Component, JSX, createComponent, makeStateless)
 import React.Basic.DOM as R
 import React.Basic.DOM.Internal (CSS)
@@ -28,7 +28,6 @@ sectionToTitle = case _ of
   DoveRicevo -> "Dove ricevo"
   FAQ -> "FAQ"
   Contatti -> "Contatti"
-  DisturbiTrattati -> "Disturbi trattati"
 
 menuItemsComponent :: Component MenuItemsProps
 menuItemsComponent = createComponent "Menu"
@@ -38,7 +37,7 @@ menuItems = makeStateless menuItemsComponent \props ->
   let
     fromSectionToLink :: Section -> JSX
     fromSectionToLink section =
-      link {
+      link $ EffectfulLink {
         onClick: props.onClick
         , value: section
         , text: sectionToTitle section
