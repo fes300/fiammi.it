@@ -35,12 +35,14 @@ style :: {bluePalette :: String
   , highlight :: CSS
   , subtitle :: CSS
   , quote :: CSS
+  , blackText :: String
 }
 
 style = {"bluePalette": "#343944"
   , "bluePaletteLight": "#484c56"
   , "white": "#fff"
   , "green": "#35ba52"
+  , "blackText": "#434345"
   , "lightGreen": "#85d597"
   , "safeGreen": "#58c56f"
   , "lightGray": "#f2f2f2"
@@ -54,7 +56,7 @@ style = {"bluePalette": "#343944"
       , "letterSpacing": "-0.45px"
       , "lineHeight": "24px"
       , "whiteSpace": "nowrap"}
-  , "title": R.css { "color": "rgb(67, 67, 69)"
+  , "title": R.css { "color": "#434345"
     , "fontSize": "36px"
     , "fontFamily": "'PT Serif', Georgia, 'Times New Roman'"
     , "fontWeight": "700"
@@ -62,10 +64,10 @@ style = {"bluePalette": "#343944"
     , "lineHeight": "1.2"
     , "textAlign": "center" }
   , "subtitle": R.css { "fontWeight": "700"
-    , "color": "rgb(67, 67, 69)"
+    , "color": "#434345"
     , "fontSize": "20px" }
   , "quote": R.css { "fontWeight": "400"
-    , "color": "rgb(67, 67, 69)"
+    , "color": "#434345"
     , "fontSize": "24px"
     , "fontStyle": "italic"
     , "lineHeight": "39px"

@@ -30,7 +30,7 @@ altriDisturbiImage = R.css { display: "flex"
   , flexDirection: ""
   , justifyContent: "center"
   , height: "200px"
-  , backgroundImage: "url(../../src/assets/images/altriDisturbi.jpeg)"
+  , backgroundImage: "url(../../src/assets/images/altriDisturbi.jpg)"
   , backgroundPosition: "center"
   , backgroundSize: "cover"
   , margin: "30px 0" }
