@@ -18,6 +18,6 @@
     "purescript-psci-support": "^4.0.0"
   },
   "resolutions": {
-    "purescript-typelevel-prelude": "^3.0.0"
+    "purescript-typelevel-prelude": "^5.2.0"
   }
 }
