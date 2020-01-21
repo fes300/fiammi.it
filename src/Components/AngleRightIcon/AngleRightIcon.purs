@@ -1,10 +1,7 @@
 module Components.AngleRight where
 
-import Prelude
-
 import React.Basic (Component, JSX, createComponent, makeStateless)
-import React.Basic.DOM as R
-import React.Basic.DOM.SVG (path)
+import React.Basic.DOM.SVG (path, svg)
 
 type QuoteProps = { color :: String, height :: String, width :: String }
 
@@ -13,7 +10,7 @@ angleRightComponent = createComponent "AngleRight"
 
 angleRight :: QuoteProps -> JSX
 angleRight = makeStateless angleRightComponent \props ->
-  R.svg { fill: props.color
+  svg { fill: props.color
       , width: props.width
       , height: props.height
       , viewBox: "0 0 284.935 284.936"

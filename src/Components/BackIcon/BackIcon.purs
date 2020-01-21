@@ -1,8 +1,7 @@
 module Components.BackIcon where
 
 import React.Basic (Component, JSX, createComponent, makeStateless)
-import React.Basic.DOM as R
-import React.Basic.DOM.SVG (path)
+import React.Basic.DOM.SVG (svg, path)
 
 type BackIconProps = { color :: String, height :: String, width :: String }
 
@@ -11,7 +10,7 @@ backIconComponent = createComponent "BackIcon"
 
 backIcon :: BackIconProps -> JSX
 backIcon = makeStateless backIconComponent \props ->
-  R.svg { fill: props.color
+  svg { fill: props.color
       , width: props.width
       , height: props.height
       , viewBox: "0 0 492 492"
