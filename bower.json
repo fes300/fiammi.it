@@ -12,10 +12,12 @@
     "purescript-effect": "^2.0.0",
     "purescript-react-basic": "^13.0.0",
     "purescript-css": "^4.0.0",
-    "purescript-functions": "^4.0.0",
-    "purescript-typelevel-prelude": "^3.0.0"
+    "purescript-functions": "^4.0.0"
   },
   "devDependencies": {
     "purescript-psci-support": "^4.0.0"
+  },
+  "resolutions": {
+    "purescript-typelevel-prelude": "^3.0.0"
   }
 }
