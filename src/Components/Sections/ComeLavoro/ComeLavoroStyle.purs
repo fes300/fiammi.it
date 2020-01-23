@@ -8,7 +8,7 @@ image = R.css { display: "flex"
   , flexDirection: ""
   , justifyContent: "center"
   , height: "200px"
-  , backgroundImage: "url(../../src/assets/images/doors.jpg)"
+  , backgroundImage: "url(assets/images/doors.jpg)"
   , backgroundPosition: "top center"
   , backgroundSize: "cover"
   , margin: "30px 0" }

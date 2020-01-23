@@ -9,7 +9,7 @@ imageContainer = R.css { display: "flex"
 , flexDirection: ""
 , justifyContent: "center"
 , height: "350px"
-, backgroundImage: "url(../../src/assets/images/fiammi.jpeg)"
+, backgroundImage: "url(assets/images/fiammi.jpeg)"
 , backgroundPosition: "top center"
 , backgroundSize: "cover"
 , margin: "30px 0" }
