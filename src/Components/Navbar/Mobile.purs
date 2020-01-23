@@ -32,7 +32,7 @@ mobileNavbar = make mobileNavbarComponent { initialState, render }
               { style: navbarStyle
               ,children: [
                 case self.props.home of
-                  false -> navigationWrapper { children: [backIcon { color: "#fff", width: "20", height: "20" }]
+                  false -> navigationWrapper { children: [backIcon { color: "#fff", width: "48", height: "25" }]
                     , style: backButton
                     , path: HomePath }
                   true -> R.button { style: burger

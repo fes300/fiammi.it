@@ -1,17 +1,21 @@
 module Components.App where
 
-import Components.Navbar (Navbar)
+import Prelude
+
+import Utils (Context)
+import Control.Monad.Reader (Reader)
 import Navigation (navigation)
 import React.Basic (Component, JSX, createComponent, makeStateless)
 import React.Basic.DOM as R
 import Style.App (appStyle)
 
-component :: Component { navbar :: Navbar }
+type AppProps = Unit
+
+component :: Component AppProps
 component = createComponent "App"
 
-app :: { navbar :: Navbar } -> JSX
-app = makeStateless component \{ navbar } ->
-  R.div
-    { style: appStyle
-      , children: [ navigation { navbar } ]
-    }
+app :: Reader Context (AppProps -> JSX)
+app = do
+  navigation <- navigation
+  pure $ makeStateless component \_ -> R.div { style: appStyle
+    , children: [ navigation unit ] }

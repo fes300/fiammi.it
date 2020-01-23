@@ -17,9 +17,7 @@ navbarStyle = R.css {
 }
 
 backButton :: CSS
-backButton = R.css {
-  marginRight: "10px"
-  , display: "flex" }
+backButton = R.css { display: "flex" }
 
 burger :: CSS
 burger = R.css {

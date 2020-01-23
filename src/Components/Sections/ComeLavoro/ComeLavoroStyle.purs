@@ -9,6 +9,6 @@ image = R.css { display: "flex"
   , justifyContent: "center"
   , height: "200px"
   , backgroundImage: "url(../../src/assets/images/doors.jpg)"
-  , backgroundPosition: "center"
+  , backgroundPosition: "top center"
   , backgroundSize: "cover"
   , margin: "30px 0" }

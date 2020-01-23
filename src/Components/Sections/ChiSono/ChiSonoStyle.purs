@@ -8,9 +8,9 @@ imageContainer :: CSS
 imageContainer = R.css { display: "flex"
 , flexDirection: ""
 , justifyContent: "center"
-, height: "450px"
+, height: "350px"
 , backgroundImage: "url(../../src/assets/images/fiammi.jpeg)"
-, backgroundPosition: "center"
+, backgroundPosition: "top center"
 , backgroundSize: "cover"
 , margin: "30px 0" }
 

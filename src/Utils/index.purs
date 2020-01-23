@@ -12,10 +12,42 @@ import Web.HTML (Window, window)
 import Web.HTML.HTMLDocument (toNonElementParentNode)
 import Web.HTML.Window (document, scroll, scrollY, innerWidth)
 
-isMobile :: Window -> Effect Boolean
-isMobile window = do
-  windowWidth <- innerWidth window
-  pure $ windowWidth < 425
+sectionToString :: Section -> String
+sectionToString = case _ of
+  Home -> "Home"
+  ChiSono -> "ChiSono"
+  DiCosaMiOccupo -> "DiCosaMiOccupo"
+  ComeLavoro -> "ComeLavoro"
+  DoveRicevo -> "DoveRicevo"
+  FAQ -> "FAQ"
+  Contatti -> "Contatti"
+
+data DeviceType = Mobile | Tablet | Desktop
+
+type Context = {
+  device :: DeviceType,
+  deviceWidth :: Int
+}
+
+getDeviceWidth :: Effect Int
+getDeviceWidth = innerWidth =<< window
+
+getDeviceType :: Effect DeviceType
+getDeviceType = do
+  windowWidth <- getDeviceWidth
+  if
+    windowWidth < 425 then pure Mobile
+  else
+    if windowWidth < 1025 then pure Tablet
+      else pure Desktop
+
+isMobileOrTablet :: Effect Boolean
+isMobileOrTablet = do
+  deviceType <- getDeviceType
+  pure $ case deviceType of
+    Mobile -> true
+    Tablet -> true
+    Desktop -> false
 
 scrollTo :: String -> Effect Unit
 scrollTo el =
@@ -30,15 +62,5 @@ scrollTo el =
         Nothing -> log $ el <> " not found"
         Just domEl  -> do
           elScroll <- getBoundingClientRect domEl
-          mobile <- isMobile unwrappedWindow
-          scroll currentScroll (currentScroll + floor elScroll - getTopMargin mobile) unwrappedWindow
-
-sectionToString :: Section -> String
-sectionToString = case _ of
-  Home -> "Home"
-  ChiSono -> "ChiSono"
-  DiCosaMiOccupo -> "DiCosaMiOccupo"
-  ComeLavoro -> "ComeLavoro"
-  DoveRicevo -> "DoveRicevo"
-  FAQ -> "FAQ"
-  Contatti -> "Contatti"
+          mobileOrTablet <- isMobileOrTablet
+          scroll currentScroll (currentScroll + floor elScroll - getTopMargin mobileOrTablet) unwrappedWindow

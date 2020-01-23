@@ -11,7 +11,7 @@ ansiaImage = R.css { display: "flex"
   , justifyContent: "center"
   , height: "200px"
   , backgroundImage: "url(../../src/assets/images/ansia.jpeg)"
-  , backgroundPosition: "center"
+  , backgroundPosition: "top center"
   , backgroundSize: "cover"
   , margin: "30px 0" }
 
@@ -21,7 +21,7 @@ depressioneImage = R.css { display: "flex"
   , justifyContent: "center"
   , height: "200px"
   , backgroundImage: "url(../../src/assets/images/depressione.jpeg)"
-  , backgroundPosition: "center"
+  , backgroundPosition: "top center"
   , backgroundSize: "cover"
   , margin: "30px 0" }
 
@@ -31,7 +31,7 @@ altriDisturbiImage = R.css { display: "flex"
   , justifyContent: "center"
   , height: "200px"
   , backgroundImage: "url(../../src/assets/images/altriDisturbi.jpg)"
-  , backgroundPosition: "center"
+  , backgroundPosition: "top center"
   , backgroundSize: "cover"
   , margin: "30px 0" }
 
