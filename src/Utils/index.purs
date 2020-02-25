@@ -8,7 +8,7 @@ import Effect.Console (log)
 import Prelude (Unit, bind, (=<<), ($), map, pure, (-), (+), (<), (<>))
 import Web.DOM.Element.Add (getBoundingClientRect)
 import Web.DOM.NonElementParentNode (getElementById)
-import Web.HTML (Window, window)
+import Web.HTML (window)
 import Web.HTML.HTMLDocument (toNonElementParentNode)
 import Web.HTML.Window (document, scroll, scrollY, innerWidth)
 

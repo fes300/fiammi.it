@@ -7,6 +7,6 @@ $ yarn && bower install
 
 ## build
 ```
-$ yarn uglyBuild
+$ yarn build
 ```
 

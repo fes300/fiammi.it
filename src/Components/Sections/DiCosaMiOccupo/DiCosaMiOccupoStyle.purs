@@ -1,36 +1,40 @@
 module Style.DiCosaMiOccupo where
 
-import Prelude ((<>))
 import Constants (style)
+import Prelude ((<>))
 import React.Basic.DOM as R
 import React.Basic.DOM.Internal (CSS)
 
-ansiaImage :: CSS
-ansiaImage = R.css { display: "flex"
+foreign import ansiaImage :: { default :: String }
+foreign import depressioneImage :: { default :: String }
+foreign import altriDisturbiImage :: { default :: String }
+
+ansiaImageStyle :: CSS
+ansiaImageStyle = R.css { display: "flex"
   , flexDirection: ""
   , justifyContent: "center"
   , height: "200px"
-  , backgroundImage: "url(assets/images/ansia.jpeg)"
+  , backgroundImage: "url(" <> ansiaImage.default <> ")"
   , backgroundPosition: "top center"
   , backgroundSize: "cover"
   , margin: "30px 0" }
 
-depressioneImage :: CSS
-depressioneImage = R.css { display: "flex"
+depressioneImageStyle :: CSS
+depressioneImageStyle = R.css { display: "flex"
   , flexDirection: ""
   , justifyContent: "center"
   , height: "200px"
-  , backgroundImage: "url(assets/images/depressione.jpeg)"
+  , backgroundImage: "url(" <> depressioneImage.default <> ")"
   , backgroundPosition: "top center"
   , backgroundSize: "cover"
   , margin: "30px 0" }
 
-altriDisturbiImage :: CSS
-altriDisturbiImage = R.css { display: "flex"
+altriDisturbiImageStyle :: CSS
+altriDisturbiImageStyle = R.css { display: "flex"
   , flexDirection: ""
   , justifyContent: "center"
   , height: "200px"
-  , backgroundImage: "url(assets/images/altriDisturbi.jpg)"
+  , backgroundImage: "url(" <> altriDisturbiImage.default <> ")"
   , backgroundPosition: "top center"
   , backgroundSize: "cover"
   , margin: "30px 0" }

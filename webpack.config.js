@@ -16,7 +16,7 @@ const isProd = ({ mode }) => mode === "production";
 
 module.exports = (_env, options) => ({
   entry: {
-    main: "./src/index.js",
+    main: "./src/index.js"
   },
   output: {
     filename: "bundle.js",
@@ -99,7 +99,11 @@ module.exports = (_env, options) => ({
         oneOf: [
           {
             test: /\.(css)$/,
-            use: [ MiniCssExtractPlugin.loader, "css-loader" ]
+            use: [MiniCssExtractPlugin.loader, "css-loader"]
+          },
+          {
+            test: /\.(png|svg|jpg|jpeg|gif)$/,
+            use: ["file-loader"]
           },
           {
             test: /\.purs$/,
