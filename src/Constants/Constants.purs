@@ -30,11 +30,13 @@ style :: {bluePalette :: String
   , safeGreen :: String
   , lightGray :: String
   , borderColor :: String
+  , borderColorLight :: String
   , stylishText :: CSS
   , title :: CSS
   , highlight :: CSS
   , subtitle :: CSS
   , quote :: CSS
+  , textColor :: String
   , blackText :: String
 }
 
@@ -43,10 +45,12 @@ style = {"bluePalette": "#343944"
   , "white": "#fff"
   , "green": "#35ba52"
   , "blackText": "#434345"
+  , "textColor": "#9b9b9b"
   , "lightGreen": "#85d597"
   , "safeGreen": "#58c56f"
   , "lightGray": "#f2f2f2"
   , "borderColor": "#bcb1b1"
+  , "borderColorLight": "#ddd"
   , "stylishText":  R.css {"cursor": "pointer"
       , "display": "inline"
       , "fontFamily": "PT Serif, Georgia, Times New Roman, Times, serif"

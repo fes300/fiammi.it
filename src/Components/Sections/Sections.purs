@@ -6,6 +6,7 @@ import Components.ChiSono (chiSono)
 import Components.ComeLavoro (comeLavoro)
 import Components.DiCosaMiOccupo (diCosaMiOccupo)
 import Components.DoveRicevo (doveRicevo)
+import Components.FAQ (faq)
 import Components.Home (home)
 import Constants (Section(..), sections)
 import Data.Map (Map, fromFoldable)
@@ -25,7 +26,7 @@ sectionsJsx = fromFoldable $ map sectionToTuple sections
       DiCosaMiOccupo -> Tuple DiCosaMiOccupo (R.div { style: sectionStyle, id: (sectionToString DiCosaMiOccupo), children: [ diCosaMiOccupo unit ] })
       ComeLavoro -> Tuple ComeLavoro (R.div { style: sectionStyle, id: (sectionToString ComeLavoro), children: [ comeLavoro unit ] })
       DoveRicevo -> Tuple DoveRicevo (R.div { style: sectionStyle, id: (sectionToString DoveRicevo), children: [ doveRicevo unit ] })
-      FAQ -> Tuple FAQ (R.div { style: sectionStyle, id: (sectionToString FAQ), children: [ R.text "FAQ" ] })
+      FAQ -> Tuple FAQ (R.div { style: sectionStyle, id: (sectionToString FAQ), children: [ faq unit ] })
       Contatti -> Tuple Contatti (R.div { style: sectionStyle, id: (sectionToString Contatti), children: [] })
 
 
