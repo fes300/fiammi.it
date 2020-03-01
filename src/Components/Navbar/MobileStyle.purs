@@ -7,7 +7,7 @@ import React.Basic.DOM.Internal (CSS)
 navbarStyle :: CSS
 navbarStyle = R.css {
   position: "fixed",
-  backgroundColor: "#343944",
+  backgroundColor: style.bluePalette,
   color: "white",
   height: "56px",
   width: "100%",

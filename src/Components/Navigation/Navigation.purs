@@ -1,8 +1,8 @@
 module Navigation where
 
-import Prelude(Unit, pure, bind, (>>=), unit, ($))
+import Prelude (Unit, pure, bind, (>>=), unit, ($), (<>))
 
-import Utils (Context)
+import Components.Footer (footer)
 import Components.Navbar (navbar)
 import Components.NavigationLink (Path(..), toPath)
 import Components.Sections (sectionsJsx)
@@ -11,6 +11,7 @@ import Data.Array (fromFoldable)
 import Data.Map (values)
 import React.Basic (Component, JSX, createComponent, make)
 import React.Basic.DOM as R
+import Utils (Context)
 import Web.Event.Event (EventType(..))
 import Web.Event.EventTarget (addEventListener, eventListener)
 import Web.HTML (window)
@@ -41,10 +42,10 @@ navigation = do
       case self.state of
         HomePath -> R.div { children: [nav { home: true }
           , R.div { style: R.css { padding: "0 15px"}
-            , children: fromFoldable (values sectionsJsx) }] }
+            , children: (fromFoldable $ values sectionsJsx) }] <> [footer unit] }
         AnsiaPath -> R.div { children: [nav { home: false }
           , R.text "ansia"] }
         DepressionePath -> R.div { children: [nav { home: false }
-          , R.text "depressione"] }
+          , R.text "depressione"] <> [footer unit] }
         AltriPath -> R.div { children: [nav { home: false }
-          , R.text "altri"] }
+          , R.text "altri"] <> [footer unit] }

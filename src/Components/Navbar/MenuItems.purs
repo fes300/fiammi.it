@@ -27,7 +27,6 @@ sectionToTitle = case _ of
   ComeLavoro -> "Come lavoro"
   DoveRicevo -> "Dove ricevo"
   FAQ -> "FAQ"
-  Contatti -> "Contatti"
 
 menuItemsComponent :: Component MenuItemsProps
 menuItemsComponent = createComponent "Menu"

@@ -4,9 +4,9 @@ import Prelude
 
 import Components.AngleRight (angleRight)
 import Components.Divider (divider)
-import Components.Link (link, LinkProps(Link))
+import Components.Link (scrollLink, LinkProps(Link))
 import Components.NavigationLink (Path(..), navigationLink)
-import Constants (style, Section(Contatti))
+import Constants (style)
 import React.Basic (Component, JSX, createComponent, makeStateless)
 import React.Basic.DOM as R
 import Style.DiCosaMiOccupo (altriDisturbiImageStyle, ansiaImageStyle, cosaPossoFare, cosaPossoFareTitle, depressioneImageStyle, minidivider, subsection)
@@ -68,8 +68,8 @@ diCosaMiOccupo = makeStateless diCosaMiOccupoComponent \props ->
               , marginTop: "20px"
               , alignItems: "center"
               , justifyContent: "center"}
-            , children: [ link $ Link { text: "Chiedi un consulto"
-                , value: Contatti
+            , children: [ scrollLink $ Link { text: "Chiedi un consulto"
+                , value: "#contact-form"
                 , style: R.mergeStyles [navigationLinkStyle, R.css { marginRight: "10px" }] }
               , angleRight { height: "12", width: "12", color: style.safeGreen } ]} ]}]
   }

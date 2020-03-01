@@ -7,6 +7,7 @@ import React.Basic (Component, JSX, createComponent, makeStateless)
 import React.Basic.DOM as R
 import React.Basic.DOM.Events (capture)
 import React.Basic.Events (EventFn, EventHandler, SyntheticEvent, unsafeEventFn)
+import Style.Button as S
 
 type ButtonProps = { label :: String
   , disabled :: Boolean
@@ -24,8 +25,8 @@ button = makeStateless buttonComponent \props ->
     specializedHandler :: EventHandler
     specializedHandler = capture ignoreEvent props.onClick
   in
-    R.button { children: [ R.text props.label ]
+    R.button { style: S.buttonStyle
+      , children: [ R.text props.label ]
       , disabled: props.disabled
       , onClick: specializedHandler
-      , type: "submit"
-    }
+      , type: "submit" }

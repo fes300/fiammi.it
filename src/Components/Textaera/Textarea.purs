@@ -8,10 +8,13 @@ import Effect (Effect)
 import Effect.Uncurried (EffectFn1)
 import React.Basic (Component, JSX, createComponent, makeStateless)
 import React.Basic.DOM as R
+import React.Basic.DOM.Internal (CSS)
 import React.Basic.DOM.Events (preventDefault, targetValue)
 import React.Basic.Events (handler, SyntheticEvent)
+import Style.Textarea as S
 
 type TextareaProps = { value :: Maybe NonEmptyString
+  , style :: CSS
   , onChange :: Maybe NonEmptyString -> Effect Unit
   , placeholder :: String
   , required :: Boolean }
@@ -28,5 +31,13 @@ textarea = makeStateless textareaComponent \props ->
     specializedHandler = handler (preventDefault >>> targetValue) (convertToNonEmpty >>> props.onChange)
   in
     case props.value of
-      Nothing -> R.textarea { value: "", onChange: specializedHandler, placeholder: props.placeholder }
-      Just n -> R.textarea { value: toString n, onChange: specializedHandler, placeholder: props.placeholder }
+      Nothing -> R.textarea { value: ""
+        , rows: 8
+        , onChange: specializedHandler
+        , placeholder: props.placeholder
+        , style: R.mergeStyles [S.textareaStyle , props.style] }
+      Just n -> R.textarea { value: toString n
+        , rows: 8
+        , onChange: specializedHandler
+        , placeholder: props.placeholder
+        , style: R.mergeStyles [S.textareaStyle , props.style] }

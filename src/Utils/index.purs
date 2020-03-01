@@ -20,7 +20,6 @@ sectionToString = case _ of
   ComeLavoro -> "ComeLavoro"
   DoveRicevo -> "DoveRicevo"
   FAQ -> "FAQ"
-  Contatti -> "Contatti"
 
 data DeviceType = Mobile | Tablet | Desktop
 

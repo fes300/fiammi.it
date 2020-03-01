@@ -27,6 +27,5 @@ sectionsJsx = fromFoldable $ map sectionToTuple sections
       ComeLavoro -> Tuple ComeLavoro (R.div { style: sectionStyle, id: (sectionToString ComeLavoro), children: [ comeLavoro unit ] })
       DoveRicevo -> Tuple DoveRicevo (R.div { style: sectionStyle, id: (sectionToString DoveRicevo), children: [ doveRicevo unit ] })
       FAQ -> Tuple FAQ (R.div { style: sectionStyle, id: (sectionToString FAQ), children: [ faq unit ] })
-      Contatti -> Tuple Contatti (R.div { style: sectionStyle, id: (sectionToString Contatti), children: [] })
 
 

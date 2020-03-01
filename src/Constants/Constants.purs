@@ -9,7 +9,7 @@ import Data.List (List(..), (:))
 import React.Basic.DOM as R
 import React.Basic.DOM.Internal (CSS)
 
-data Section = Home | ChiSono | DiCosaMiOccupo | ComeLavoro | DoveRicevo | FAQ | Contatti
+data Section = Home | ChiSono | DiCosaMiOccupo | ComeLavoro | DoveRicevo | FAQ
 
 derive instance genericSection :: Generic Section _
 
@@ -20,9 +20,10 @@ instance sectionCompare :: Ord Section where
   compare = genericCompare
 
 sections :: List Section
-sections = (Home : ChiSono : DiCosaMiOccupo : ComeLavoro : DoveRicevo : FAQ : Contatti : Nil)
+sections = (Home : ChiSono : DiCosaMiOccupo : ComeLavoro : DoveRicevo : FAQ : Nil)
 
 style :: {bluePalette :: String
+  , bluePaletteMedium :: String
   , bluePaletteLight :: String
   , white :: String
   , green :: String
@@ -41,6 +42,7 @@ style :: {bluePalette :: String
 }
 
 style = {"bluePalette": "#343944"
+  , "bluePaletteMedium": "#3e4350"
   , "bluePaletteLight": "#484c56"
   , "white": "#fff"
   , "green": "#35ba52"

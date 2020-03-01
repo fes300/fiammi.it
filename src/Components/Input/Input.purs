@@ -9,8 +9,11 @@ import React.Basic (Component, JSX, createComponent, makeStateless)
 import React.Basic.DOM as R
 import React.Basic.DOM.Events (preventDefault, targetValue)
 import React.Basic.Events (handler)
+import React.Basic.DOM.Internal (CSS)
+import Style.Input as S
 
 type InputProps = { value :: Maybe NonEmptyString
+  , style :: CSS
   , onChange :: Maybe NonEmptyString -> Effect Unit
   , placeholder :: String
   , required :: Boolean }
@@ -27,5 +30,13 @@ input = makeStateless inputComponent \props ->
     specializedHandler = handler (preventDefault >>> targetValue) (convertToNonEmpty >>> props.onChange)
   in
     case props.value of
-      Nothing -> R.input { type: "text", value: "", onChange: specializedHandler, placeholder: props.placeholder }
-      Just s -> R.input { type: "text", value: toString s, onChange: specializedHandler, placeholder: props.placeholder }
+      Nothing -> R.input { type: "text"
+        , value: ""
+        , style: R.mergeStyles [S.inputStyle, props.style]
+        , onChange: specializedHandler
+        , placeholder: props.placeholder }
+      Just s -> R.input { type: "text"
+          , value: toString s
+          , onChange: specializedHandler
+          , style: R.mergeStyles [S.inputStyle, props.style]
+          , placeholder: props.placeholder }

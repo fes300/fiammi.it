@@ -1,0 +1,19 @@
+input:hover,
+input:active,
+input:focus {
+  border: solid 1px #fff !important;
+  outline: none;
+}
+
+textarea:hover,
+textarea:active,
+textarea:focus {
+  border: solid 1px #fff !important;
+  outline: none;
+}
+
+button:disabled {
+  color: #c4cbd5 !important;
+  background-color: #e6e9ef !important;
+  cursor: not-allowed !important;
+}

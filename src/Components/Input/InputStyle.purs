@@ -5,4 +5,5 @@ import React.Basic.DOM.Internal (CSS)
 
 inputStyle :: CSS
 inputStyle = R.css { color: "#fff"
-  , cursor: "pointer" }
+  , cursor: "pointer"
+  , padding: "10px 17px" }

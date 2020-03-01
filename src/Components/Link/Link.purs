@@ -37,3 +37,21 @@ link = makeStateless linkComponent \props ->
           r2 <- scrollTo $ sectionToString propsF.value
           pure r2
       , children: [ R.text propsF.text]}
+
+scrollLinkComponent :: Component (LinkProps String)
+scrollLinkComponent = createComponent "Link"
+
+scrollLink :: LinkProps String -> JSX
+scrollLink = makeStateless scrollLinkComponent \props ->
+  case props of
+    EffectfulLink propsE -> R.div {style: R.mergeStyles [linkStyle, propsE.style]
+      , onClick: handler_ do
+          r1 <- propsE.onClick propsE.value
+          r2 <- scrollTo $ propsE.value
+          pure r2
+      , children: [ R.text propsE.text]}
+    Link propsF -> R.div {style: R.mergeStyles [linkStyle, propsF.style]
+      , onClick: handler_ do
+          r2 <- scrollTo $ propsF.value
+          pure r2
+      , children: [ R.text propsF.text]}
