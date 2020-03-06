@@ -7,7 +7,7 @@ import React.Basic.DOM.Internal (CSS)
 footerStyle :: CSS
 footerStyle = R.css { backgroundColor: style.bluePalette
   , flexDirection: "column"
-  , padding: "80px 15px 0"
+  , padding: "80px 15px"
   , display: "flex" }
 
 inputStyle :: CSS
@@ -39,3 +39,10 @@ iconRowWrapper = R.css { display: "flex"
   , flexDirection: "column"
   , margin: "15px auto" }
 
+success :: CSS
+success = R.css { color: style.safeGreen
+  , marginBottom: "10px" }
+
+error :: CSS
+error = R.css { color: style.dangerRed
+  , marginBottom: "10px" }

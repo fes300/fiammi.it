@@ -39,6 +39,7 @@ style :: {bluePalette :: String
   , quote :: CSS
   , textColor :: String
   , blackText :: String
+  , dangerRed :: String
 }
 
 style = {"bluePalette": "#343944"
@@ -53,6 +54,7 @@ style = {"bluePalette": "#343944"
   , "lightGray": "#f2f2f2"
   , "borderColor": "#bcb1b1"
   , "borderColorLight": "#ddd"
+  , "dangerRed": "#f14f4f"
   , "stylishText":  R.css {"cursor": "pointer"
       , "display": "inline"
       , "fontFamily": "PT Serif, Georgia, Times New Roman, Times, serif"

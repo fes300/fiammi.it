@@ -5,7 +5,7 @@ import Data.Int (floor)
 import Data.Maybe (Maybe(..))
 import Effect (Effect)
 import Effect.Console (log)
-import Prelude (Unit, bind, (=<<), ($), map, pure, (-), (+), (<), (<>))
+import Prelude (Unit, bind, (=<<), ($), map, pure, (-), (+), (<=), (<>))
 import Web.DOM.Element.Add (getBoundingClientRect)
 import Web.DOM.NonElementParentNode (getElementById)
 import Web.HTML (window)
@@ -35,9 +35,9 @@ getDeviceType :: Effect DeviceType
 getDeviceType = do
   windowWidth <- getDeviceWidth
   if
-    windowWidth < 425 then pure Mobile
+    windowWidth <= 425 then pure Mobile
   else
-    if windowWidth < 1025 then pure Tablet
+    if windowWidth <= 1025 then pure Tablet
       else pure Desktop
 
 isMobileOrTablet :: Effect Boolean
