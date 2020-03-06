@@ -35,9 +35,11 @@ iconPlusH = R.css { position: "absolute"
   , width: "14px"
   , top: "50%"}
 
-accordionElementStyle :: CSS
-accordionElementStyle = R.css { borderTop: border
+accordionElementStyle :: String -> CSS
+accordionElementStyle h = R.css { borderTop: border
   , padding: "15px"
+  , height: h
+  , transition: "height .5s"
   , overflow: "hidden"
   , textAlign: "left"}
 
@@ -49,19 +51,25 @@ accordionElementTitleStyle = R.css { textTransform: "uppercase"
   , position: "relative"
   , color: style.blackText }
 
-accordionElementBodyStyle :: CSS
-accordionElementBodyStyle = R.css { textTransform: "none"
-  , height: "0px"
+accordionElementBodyStyle :: Boolean -> CSS
+accordionElementBodyStyle active = R.css { textTransform: "none"
   , opacity: "0"
-  , transition: "opacity 1s, height .5s"
+  , position: if active then "relative" else "absolute"
+  , paddingTop: "15px"
+  , transition: "none"
   , color: style.textColor }
 
 activeTitle :: CSS
 activeTitle = R.css { color: style.safeGreen }
 
-activeBody :: String -> CSS
-activeBody h = R.css { height: h
-  , opacity: 1
-  , paddingTop: "15px"}
+activeBody :: CSS
+activeBody = R.css { opacity: 1
+  , transition: "opacity 1s"
+  , display: "block" }
 
 
+hiddenStyle :: CSS
+hiddenStyle = R.css { opacity: 0
+  , height: "auto"
+  , zIndex: "-1"
+  , position: "absolute"}

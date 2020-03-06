@@ -1,11 +1,12 @@
 module Utils where
 
 import Constants (Section(..))
-import Data.Int (floor)
+import Data.Int (floor, toNumber)
 import Data.Maybe (Maybe(..))
 import Effect (Effect)
 import Effect.Console (log)
 import Prelude (Unit, bind, (=<<), ($), map, pure, (-), (+), (<=), (<>))
+import Web.DOM.Element (clientHeight)
 import Web.DOM.Element.Add (getBoundingClientRect)
 import Web.DOM.NonElementParentNode (getElementById)
 import Web.HTML (window)
@@ -23,10 +24,8 @@ sectionToString = case _ of
 
 data DeviceType = Mobile | Tablet | Desktop
 
-type Context = {
-  device :: DeviceType,
-  deviceWidth :: Int
-}
+type Context = { device :: DeviceType
+  , deviceWidth :: Int }
 
 getDeviceWidth :: Effect Int
 getDeviceWidth = innerWidth =<< window
@@ -47,6 +46,16 @@ isMobileOrTablet = do
     Mobile -> true
     Tablet -> true
     Desktop -> false
+
+getElementSize :: String -> Effect Number
+getElementSize el = do
+  domElement <- getElementById el =<< (map toNonElementParentNode $ document =<< window)
+  unwrappedWindow <- window
+  case domElement of
+    Nothing -> do
+      _ <- log $ el <> " not found"
+      pure (toNumber 0)
+    Just domEl  -> clientHeight domEl
 
 scrollTo :: String -> Effect Unit
 scrollTo el =
