@@ -7,7 +7,6 @@
     "start": "webpack-dev-server --disableHostCheck=true -wd --port 2000",
     "start-public": "webpack-dev-server -wd --port 3000 --host 0.0.0.0",
     "build": "webpack -p",
-    "postbuild": "cp -r ./src/assets ./build",
     "build:purs": "pulp build",
     "pscid:build": "pulp build",
     "pscid:test": "pulp test",
