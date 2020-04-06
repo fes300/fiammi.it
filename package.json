@@ -4,6 +4,7 @@
   "description": "An example react-basic project",
   "repository": "lumihq/react-basic-starter",
   "scripts": {
+    "install": "bower install",
     "start": "webpack-dev-server --disableHostCheck=true -wd --port 2000",
     "start-public": "webpack-dev-server -wd --port 3000 --host 0.0.0.0",
     "build": "webpack -p",
@@ -19,6 +20,7 @@
     "react-dom": "16.6.1"
   },
   "devDependencies": {
+    "purescript": "^0.13.6",
     "bower": "^1.8.4",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "1.0.1",
