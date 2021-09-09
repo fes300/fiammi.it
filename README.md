@@ -2,7 +2,7 @@
 
 ## install deps
 ```
-$ yarn && bower install
+$> yarn && bower install
 ```
 
 ## build
